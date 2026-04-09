@@ -1,13 +1,21 @@
 # Convert minutes to hours and minutes
 
-minutes = int(input("Enter minutes: "))
+try:
+    minutes = int(input("Enter minutes: "))
 
-hours = minutes // 60
-remaining_minutes = minutes % 60
+    if minutes < 0:
+        print("Minutes cannot be negative")
+    else:
+        hours = minutes // 60
+        remaining_minutes = minutes % 60
 
-if hours == 0:
-    print(f"{remaining_minutes} minutes")
-elif hours == 1:
-    print(f"{hours} hr {remaining_minutes} minutes")
-else:
-    print(f"{hours} hrs {remaining_minutes} minutes")
+        if hours == 0:
+            print(f"{remaining_minutes} minutes")
+        elif remaining_minutes == 0:
+            print(f"{hours} hr" if hours == 1 else f"{hours} hrs")
+        else:
+            hour_label = "hr" if hours == 1 else "hrs"
+            print(f"{hours} {hour_label} {remaining_minutes} minutes")
+
+except ValueError:
+    print("Invalid input. Please enter an integer.")
